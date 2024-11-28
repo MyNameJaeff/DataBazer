@@ -9,11 +9,14 @@ namespace DataBazer
         {
             while (true)
             {
+                LogoHandler.DisplayLogo();
                 var selection = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
-                        .Title("[bold]Database Management[/]")
-                        .AddChoices("Pick Database", "Create Database", "[red]Exit[/]")
-                );
+                        .Title("[bold underline rgb(190,40,0)]Database Management[/]")
+                        .AddChoices("Pick Database", "Create Database", "Delete Database", "[red]Exit[/]")
+                        .HighlightStyle("cyan"));
+
+                //Console.Clear();
 
                 switch (selection)
                 {
@@ -23,11 +26,16 @@ namespace DataBazer
                     case "Create Database":
                         return await CreateDatabase();
 
+                    case "Delete Database":
+                        return await DeleteDatabase();
+
                     case "[red]Exit[/]":
-                        return null;
+                        AnsiConsole.MarkupLine("[green bold]Goodbye![/]");
+                        Environment.Exit(0);
+                        break;
 
                     default:
-                        AnsiConsole.MarkupLine("[red]Invalid choice, try again.[/]");
+                        AnsiConsole.MarkupLine("[red bold]Invalid choice, try again.[/]");
                         break;
                 }
             }
@@ -35,36 +43,53 @@ namespace DataBazer
 
         private async Task<SqlConnection?> SelectDatabase()
         {
-            AnsiConsole.MarkupLine("[yellow]Fetching available databases...[/]");
+            List<string> databases = new List<string>();
 
-            try
-            {
-                using (var serverConnection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Trusted_Connection=True"))
+            await AnsiConsole.Status()
+                .Spinner(Spinner.Known.Star)
+                .StartAsync("[yellow]Fetching available databases...[/]", async ctx =>
                 {
-                    serverConnection.Open();
-                    var databases = await GetAllDatabases(serverConnection);
+                    await Task.Delay(1500); // Simulate loading
+                    ctx.Status("[yellow]Connecting to the server...[/]");
 
-                    if (databases.Count == 0)
+                    try
                     {
-                        AnsiConsole.MarkupLine("[red]No databases found.[/]");
-                        return null;
+                        using (var serverConnection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Trusted_Connection=True"))
+                        {
+                            serverConnection.Open();
+                            databases = await GetAllDatabases(serverConnection);
+                        }
                     }
+                    catch (Exception ex)
+                    {
+                        ctx.Status($"[red]Error: {ex.Message}[/]");
+                        throw;
+                    }
+                });
 
-                    var selectedDatabase = AnsiConsole.Prompt(
-                        new SelectionPrompt<string>()
-                            .Title("[yellow]Select a database to connect:[/]")
-                            .AddChoices(databases)
-                    );
-
-                    return GetDatabase(selectedDatabase);
-                }
-            }
-            catch (Exception ex)
+            if (databases.Count == 0)
             {
-                AnsiConsole.MarkupLine($"[red]Error: {ex.Message}[/]");
+                AnsiConsole.MarkupLine("[red]No databases found.[/]");
                 return null;
             }
+
+            databases.Add("[red]Back[/]");
+
+            var selectedDatabase = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("[bold yellow]Select a database to connect:[/]")
+                    .AddChoices(databases)
+                    .HighlightStyle("cyan"));
+
+            if (selectedDatabase == "[red]Back[/]")
+            {
+                Console.Clear();
+                return await HandleDatabaseSelection();
+            }
+
+            return await GetDatabase(selectedDatabase);
         }
+
 
         private async Task<List<string>> GetAllDatabases(SqlConnection serverConnection)
         {
@@ -92,41 +117,184 @@ namespace DataBazer
 
         private async Task<SqlConnection?> CreateDatabase()
         {
-            string dbName = AnsiConsole.Ask<string>("[yellow]Enter the name of the new database:[/]");
-
-            if (string.IsNullOrWhiteSpace(dbName))
+            while (true)
             {
-                AnsiConsole.MarkupLine("[red]Invalid database name.[/]");
-                return null;
-            }
+                string dbName = AnsiConsole.Ask<string>("[yellow]Enter the name of the new database:[/]");
 
-            const string queryTemplate = "CREATE DATABASE [{0}]";
-
-            try
-            {
-                using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Trusted_Connection=True"))
+                if (string.IsNullOrWhiteSpace(dbName))
                 {
-                    connection.Open();
-                    using (var command = new SqlCommand(string.Format(queryTemplate, dbName), connection))
+                    AnsiConsole.MarkupLine("[red bold]Invalid database name.[/]");
+                    continue;
+                }
+
+                const string queryTemplate = "CREATE DATABASE [{0}]";
+
+                try
+                {
+                    await AnsiConsole.Status()
+                        .Spinner(Spinner.Known.Star)
+                        .StartAsync("[yellow]Creating database...[/]", async ctx =>
+                        {
+                            await Task.Delay(1500); // Simulate loading
+                            ctx.Status("[yellow]Connecting to the server...[/]");
+
+                            using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Trusted_Connection=True"))
+                            {
+                                connection.Open();
+                                using (var command = new SqlCommand(string.Format(queryTemplate, dbName), connection))
+                                {
+                                    await command.ExecuteNonQueryAsync();
+                                    AnsiConsole.MarkupLine($"[green bold]Database [yellow]{dbName}[/] created successfully.[/]");
+                                }
+                            }
+                        });
+
+                    var question = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                            .Title($"[yellow]Do you want to connect to [bold]{dbName}[/]?:[/]")
+                            .AddChoices("Yes", "No (Go back)")
+                            .HighlightStyle("cyan"));
+
+                    if (question == "No (Go back)")
                     {
-                        await command.ExecuteNonQueryAsync();
-                        AnsiConsole.MarkupLine($"[green]Database {dbName} created successfully.[/]");
-                        return GetDatabase(dbName);
+                        Console.Clear();
+                        return await HandleDatabaseSelection();
+                    }
+
+                    return await GetDatabase(dbName);
+                }
+                catch (Exception ex)
+                {
+                    AnsiConsole.MarkupLine($"[red]Error: {ex.Message}[/]");
+                    var retryQuestion = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                            .Title("[yellow]Do you want to try again?:[/]")
+                            .AddChoices("Yes", "No (Go back)")
+                            .HighlightStyle("cyan"));
+
+                    if (retryQuestion == "No (Go back)")
+                    {
+                        Console.Clear();
+                        return await HandleDatabaseSelection();
                     }
                 }
             }
-            catch (Exception ex)
+        }
+
+
+        private async Task<SqlConnection?> DeleteDatabase()
+        {
+            while (true)
             {
-                AnsiConsole.MarkupLine($"[red]Error: {ex.Message}[/]");
-                return null;
+                try
+                {
+                    List<string> databases = new List<string>();
+
+                    await AnsiConsole.Status()
+                        .Spinner(Spinner.Known.Star)
+                        .StartAsync("[yellow]Fetching available databases...[/]", async ctx =>
+                        {
+                            await Task.Delay(1500); // Simulate loading
+                            ctx.Status("[yellow]Connecting to the server...[/]");
+
+                            try
+                            {
+                                using (var serverConnection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Trusted_Connection=True"))
+                                {
+                                    serverConnection.Open();
+                                    databases = await GetAllDatabases(serverConnection);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ctx.Status($"[red]Error: {ex.Message}[/]");
+                                throw;
+                            }
+                        });
+
+                    if (databases.Count == 0)
+                    {
+                        AnsiConsole.MarkupLine("[red]No databases found.[/]");
+                        return null;
+                    }
+
+                    databases.Add("[red]Back[/]");
+
+                    var selectedDatabase = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                            .Title("[yellow]Select a database to delete:[/]")
+                            .AddChoices(databases)
+                            .HighlightStyle("cyan"));
+
+                    if (selectedDatabase == "[red]Back[/]")
+                    {
+                        Console.Clear();
+                        return await HandleDatabaseSelection();
+                    }
+
+                    if (selectedDatabase == "master")
+                    {
+                        AnsiConsole.MarkupLine("[red bold]You cannot delete the master database.[/]");
+                        continue;
+                    }
+
+                    const string queryTemplate = "DROP DATABASE [{0}]";
+
+                    await AnsiConsole.Status()
+                        .Spinner(Spinner.Known.Star)
+                        .StartAsync("[yellow]Deleting database...[/]", async ctx =>
+                        {
+                            await Task.Delay(1500); // Simulate loading
+                            ctx.Status("[yellow]Connecting to the server...[/]");
+
+                            using (var connection = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Trusted_Connection=True"))
+                            {
+                                connection.Open();
+                                using (var command = new SqlCommand(string.Format(queryTemplate, selectedDatabase), connection))
+                                {
+                                    await command.ExecuteNonQueryAsync();
+                                    AnsiConsole.MarkupLine($"[green bold]Database [yellow]{selectedDatabase}[/] deleted successfully.[/]");
+                                }
+                            }
+                        });
+
+                    var question = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                            .Title("[yellow]Do you want to delete another database?:[/]")
+                            .AddChoices("Yes", "No (Go back)")
+                            .HighlightStyle("cyan"));
+
+                    if (question == "No (Go back)")
+                    {
+                        Console.Clear();
+                        return await HandleDatabaseSelection();
+                    }
+
+                    Console.Clear();
+                }
+                catch (Exception ex)
+                {
+                    AnsiConsole.MarkupLine($"[red]Error: {ex.Message}[/]");
+                    var retryQuestion = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                            .Title("[yellow]Do you want to try again?:[/]")
+                            .AddChoices("Yes", "No (Go back)")
+                            .HighlightStyle("cyan"));
+
+                    if (retryQuestion == "No (Go back)")
+                    {
+                        Console.Clear();
+                        return await HandleDatabaseSelection();
+                    }
+                }
             }
         }
 
-        private SqlConnection GetDatabase(string dbName)
+        private async Task<SqlConnection> GetDatabase(string dbName)
         {
             string connectionString = @$"Server=(localdb)\MSSQLLocalDB;Database={dbName};Trusted_Connection=True";
             var connection = new SqlConnection(connectionString);
-            connection.Open();
+            await connection.OpenAsync();
             return connection;
         }
     }

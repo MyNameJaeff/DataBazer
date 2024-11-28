@@ -14,14 +14,17 @@ namespace DataBazer
 
         public async Task HandleDataOperations()
         {
+            Console.Clear();
+            LogoHandler.DisplayHeader(_sqlConnection.Database);
             while (true)
             {
                 var selection = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
-                        .Title("[bold]Data Management[/]")
+                        .Title("[bold underline rgb(190,40,0)]Data Management[/]")
                         .AddChoices("Insert Data", "Update Data", "Delete Data", "[red]Back[/]")
                 );
 
+                //Console.Clear();
                 switch (selection)
                 {
                     case "Insert Data":
@@ -75,7 +78,6 @@ namespace DataBazer
         }
 
         // Insert Data
-        // Insert Data
         private async Task InsertData()
         {
             var tableNames = await GetAllTableNames();
@@ -92,50 +94,113 @@ namespace DataBazer
                     .AddChoices(tableNames)
             );
 
-            // Fetch columns to display an example to the user
-            string columnsQuery = $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}'";
-            var columnNames = new List<string>();
+            // Fetch columns and their data types to display to the user
+            string columnsQuery = $@"
+SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, COLUMNPROPERTY(object_id(TABLE_NAME), COLUMN_NAME, 'IsIdentity') AS IsIdentity
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = @TableName";
+            var columns = new List<(string Name, string DataType, bool IsNullable, bool IsIdentity)>();
 
             try
             {
                 using (var command = new SqlCommand(columnsQuery, _sqlConnection))
-                using (var reader = await command.ExecuteReaderAsync())
                 {
-                    while (await reader.ReadAsync())
+                    command.Parameters.AddWithValue("@TableName", tableName);
+
+                    using (var reader = await command.ExecuteReaderAsync())
                     {
-                        columnNames.Add(reader.GetString(0));
+                        while (await reader.ReadAsync())
+                        {
+                            columns.Add((reader.GetString(0), reader.GetString(1), reader.GetString(2) == "YES", reader.GetInt32(3) == 1));
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
                 AnsiConsole.MarkupLine($"[red]Error retrieving column names: {ex.Message}[/]");
+                return;
             }
 
-            if (columnNames.Count == 0)
+            if (columns.Count == 0)
             {
                 AnsiConsole.MarkupLine("[red]No columns found for the selected table.[/]");
                 return;
             }
 
-            // Show an example based on the columns
-            string columnsExample = string.Join(", ", columnNames);
-            string valuesExample = string.Join(", ", columnNames.Select(c => "'SampleValue'"));
+            // Filter out auto-increment columns
+            var nonIdentityColumns = columns.Where(c => !c.IsIdentity).ToList();
 
-            AnsiConsole.MarkupLine($"[green]Example: \n[/][bold]Columns[/] ({columnsExample})");
-            AnsiConsole.MarkupLine($"[green]Values[/] ({valuesExample})");
+            var nonNullableColumns = nonIdentityColumns.Where(c => !c.IsNullable).Select(c => $"{c.Name} ({c.DataType})").ToList();
+            var nullableColumns = nonIdentityColumns.Where(c => c.IsNullable).Select(c => $"{c.Name} ({c.DataType})").ToList();
 
-            // Ask for input
-            string columnsInput = AnsiConsole.Ask<string>("Enter the columns: ");
-            string valuesInput = AnsiConsole.Ask<string>("Enter the values: ");
+            var nonNullableColumnsDisplay = string.Join(", ", nonNullableColumns.Select(c => $"[green]{c}[/]"));
+            AnsiConsole.MarkupLine($"[yellow]The following columns are required and cannot be deselected:[/]");
+            AnsiConsole.MarkupLine(nonNullableColumnsDisplay);
 
-            string query = $"INSERT INTO {tableName} ({columnsInput}) VALUES ({valuesInput})";
+            var prompt = new MultiSelectionPrompt<string>()
+                .Title("[bold yellow]Select optional columns to insert data into:[/]")
+                .InstructionsText("[grey](Press [bold]<space>[/] to toggle a column, and [bold]<enter>[/] to confirm your selection)[/]")
+                .NotRequired()
+                .AddChoices(nullableColumns); // Only allow selection of nullable columns
+
+            // Get user-selected columns
+            var selectedOptionalColumns = AnsiConsole.Prompt(prompt);
+
+            // Combine non-changeable and user-selected columns
+            var selectedColumns = nonNullableColumns.Concat(selectedOptionalColumns).ToList();
+
+            // Display final selection to the user
+            AnsiConsole.MarkupLine($"[yellow]The following columns will be used for data insertion:[/]");
+            AnsiConsole.MarkupLine(string.Join(", ", selectedColumns.Select(c => $"[green]{c}[/]")));
+
+            // Get user selections
+            if (selectedColumns.Count == 0)
+            {
+                AnsiConsole.MarkupLine("[red]No columns selected. Please try again.[/]");
+                return;
+            }
+
+            var columnValues = new Dictionary<string, object>();
+
+            foreach (var column in selectedColumns)
+            {
+                var columnName = column.Split(' ')[0];
+                var dataType = columns.First(c => c.Name == columnName).DataType;
+
+                // Prompt for value input
+                string value = AnsiConsole.Ask<string>($"Enter the value for [bold]{columnName}[/] ([italic]{dataType}[/]): ");
+
+                // Parse the input to the appropriate data type
+                object parsedValue = ParseValue(value, dataType);
+                if (parsedValue == null)
+                {
+                    AnsiConsole.MarkupLine($"[red]Invalid input for {columnName} of type {dataType}. Please try again.[/]");
+                    return;
+                }
+
+                columnValues.Add(columnName, parsedValue);
+            }
+
+            string columnsInput = string.Join(", ", columnValues.Keys);
+            string parametersInput = string.Join(", ", columnValues.Keys.Select(k => $"@{k}"));
+
+            string query = $"INSERT INTO {tableName} ({columnsInput}) VALUES ({parametersInput})";
 
             try
             {
                 using (var command = new SqlCommand(query, _sqlConnection))
                 {
+                    foreach (var (columnName, value) in columnValues)
+                    {
+                        command.Parameters.AddWithValue($"@{columnName}", value ?? DBNull.Value);
+                    }
+
                     await command.ExecuteNonQueryAsync();
+
+                    Console.Clear();
+                    LogoHandler.DisplayHeader(_sqlConnection.Database);
+
                     AnsiConsole.MarkupLine($"[green]Data inserted successfully into {tableName}.[/]");
                 }
             }
@@ -143,8 +208,31 @@ namespace DataBazer
             {
                 AnsiConsole.MarkupLine($"[red]Error inserting data: {ex.Message}[/]");
             }
+
         }
 
+        private object ParseValue(string input, string dataType)
+        {
+            try
+            {
+                return dataType.ToLower() switch
+                {
+                    "int" => int.Parse(input),
+                    "bigint" => long.Parse(input),
+                    "decimal" => decimal.Parse(input),
+                    "float" => double.Parse(input),
+                    "bit" => input.ToLower() == "true" || input == "1",
+                    "datetime" or "date" => DateTime.Parse(input),
+                    "nvarchar" or "varchar" or "text" => input,
+                    "binary" or "varbinary" => Convert.FromBase64String(input), // Assuming input is base64 encoded
+                    _ => input // Default fallback
+                };
+            }
+            catch
+            {
+                return null; // Return null if parsing fails
+            }
+        }
 
         // Update Data
         private async Task UpdateData()

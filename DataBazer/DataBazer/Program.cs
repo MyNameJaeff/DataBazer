@@ -7,13 +7,22 @@ namespace DataBazer
     {
         static async Task Main(string[] args)
         {
-            var dbManager = new DatabaseManager();
-            SqlConnection sqlConnection = await dbManager.HandleDatabaseSelection();
+            await ConnectToDatabase();
+        }
 
-            if (sqlConnection == null)
+        static async Task ConnectToDatabase()
+        {
+            var dbManager = new DatabaseManager();
+            SqlConnection? sqlConnection = null;
+
+            while (sqlConnection == null)
             {
-                AnsiConsole.MarkupLine("[red]Failed to connect to a database. Exiting...[/]");
-                return;
+                sqlConnection = await dbManager.HandleDatabaseSelection();
+
+                if (sqlConnection == null)
+                {
+                    AnsiConsole.MarkupLine("[red]Failed to connect to a database. Please try again.[/]");
+                }
             }
 
             await MainMenu(sqlConnection);
@@ -24,10 +33,11 @@ namespace DataBazer
             while (true)
             {
                 Console.Clear();
+                LogoHandler.DisplayHeader(sqlConnection.Database);
                 var selection = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
                         .Title("[bold underline rgb(190,40,0)]Main Menu[/]")
-                        .AddChoices("Table Management", "Data Management", "Index Management", "View Data", "[red]Exit[/]")
+                        .AddChoices("Table Management", "Data Management", "Index Management", "View Data", "Custom SQL", "[red]Back[/]", "[red]Exit[/]")
                 );
 
                 switch (selection)
@@ -51,6 +61,16 @@ namespace DataBazer
                         var dataViewer = new DataViewer(sqlConnection);
                         await dataViewer.ViewDataManager();
                         break;
+
+                    case "Custom SQL":
+                        var customSql = new CustomSql(sqlConnection);
+                        await customSql.HandleCustomSql();
+                        break;
+
+                    case "[red]Back[/]":
+                        Console.Clear();
+                        await ConnectToDatabase();
+                        return;
 
                     case "[red]Exit[/]":
                         AnsiConsole.MarkupLine("[green]Goodbye![/]");

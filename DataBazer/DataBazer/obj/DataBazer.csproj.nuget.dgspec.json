@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj": {}
+    "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj": {
+    "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj",
+        "projectUniqueName": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj",
         "projectName": "DataBazer",
-        "projectPath": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj",
+        "projectPath": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj",
         "packagesPath": "C:\\Users\\fredr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\obj\\",
+        "outputPath": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fredr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

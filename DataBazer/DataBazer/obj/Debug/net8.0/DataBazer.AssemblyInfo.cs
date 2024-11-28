@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DataBazer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75a151e16f2e36f4ec4c0b7ccb9d999aef66f340")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e726ebaff0850dc81b831cb2e142e49453af3f07")]
 [assembly: System.Reflection.AssemblyProductAttribute("DataBazer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DataBazer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cyErHkSVEkU=",
+  "dgSpecHash": "oglxODdTQvk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj",
+  "projectFilePath": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataBazer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fredr\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\fredr\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

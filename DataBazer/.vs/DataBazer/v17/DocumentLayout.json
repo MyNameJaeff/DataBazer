@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\",
+  "WorkspaceRootPath": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\databazer\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\logohandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\logohandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\databazer\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\databazer\\dataviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\dataviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\databazer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\databazer\\tablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\tablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{085CE4BA-48E5-4BF6-8890-430FD0B44F6C}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{085CE4BA-48E5-4BF6-8890-430FD0B44F6C}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\databazer\\indexmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\indexmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\indexmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{085CE4BA-48E5-4BF6-8890-430FD0B44F6C}|ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\fredr\\downloads\\databazer\\databazer\\consoleapp1\\consoleapp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{085CE4BA-48E5-4BF6-8890-430FD0B44F6C}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\consoleapp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\datamanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\customsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\customsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\tablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\tablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\databasemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|c:\\users\\fredr\\source\\repos\\databazer\\databazer\\databazer\\dataviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3506BCC-7CA9-430D-8BCB-F7FB62597A8F}|DataBazer\\DataBazer.csproj|solutionrelative:databazer\\dataviewer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,108 +42,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DataViewer.cs",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataViewer.cs",
-              "RelativeDocumentMoniker": "DataBazer\\DataViewer.cs",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataViewer.cs",
-              "RelativeToolTip": "DataBazer\\DataViewer.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAcwCMAAAAlAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "LogoHandler.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\LogoHandler.cs",
+              "RelativeDocumentMoniker": "DataBazer\\LogoHandler.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\LogoHandler.cs",
+              "RelativeToolTip": "DataBazer\\LogoHandler.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvx4AAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T06:37:49.291Z",
+              "WhenOpened": "2024-11-27T23:22:33.845Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "IndexManager.cs",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\IndexManager.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\IndexManager.cs",
               "RelativeDocumentMoniker": "DataBazer\\IndexManager.cs",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\IndexManager.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\IndexManager.cs",
               "RelativeToolTip": "DataBazer\\IndexManager.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAowAsAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAowBIAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T06:32:08.841Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\ConsoleApp1\\Program.cs",
-              "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\ConsoleApp1\\Program.cs",
-              "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AgIAADYCAAAAAAAAAAAowFsCAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T06:20:54.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ConsoleApp1",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\ConsoleApp1\\ConsoleApp1.csproj",
-              "RelativeDocumentMoniker": "ConsoleApp1\\ConsoleApp1.csproj",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\ConsoleApp1\\ConsoleApp1.csproj",
-              "RelativeToolTip": "ConsoleApp1\\ConsoleApp1.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-22T06:26:54.994Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataManager.cs",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataManager.cs",
-              "RelativeDocumentMoniker": "DataBazer\\DataManager.cs",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DataManager.cs",
-              "RelativeToolTip": "DataBazer\\DataManager.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAQwIAAAABRAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T06:14:47.059Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "CustomSql.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\CustomSql.cs",
+              "RelativeDocumentMoniker": "DataBazer\\CustomSql.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\CustomSql.cs",
+              "RelativeToolTip": "DataBazer\\CustomSql.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T23:13:02.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "TableManager.cs",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\TableManager.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\TableManager.cs",
               "RelativeDocumentMoniker": "DataBazer\\TableManager.cs",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\TableManager.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\TableManager.cs",
               "RelativeToolTip": "DataBazer\\TableManager.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwDAAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAC8BAAAAAAAAAAAmwEIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T06:14:34.328Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "DatabaseManager.cs",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DatabaseManager.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DatabaseManager.cs",
               "RelativeDocumentMoniker": "DataBazer\\DatabaseManager.cs",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\DatabaseManager.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DatabaseManager.cs",
               "RelativeToolTip": "DataBazer\\DatabaseManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAIA4wBoAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T06:14:15.434Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DataViewer.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataViewer.cs",
+              "RelativeDocumentMoniker": "DataBazer\\DataViewer.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataViewer.cs",
+              "RelativeToolTip": "DataBazer\\DataViewer.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAvwIsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T06:37:49.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "DataManager.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataManager.cs",
+              "RelativeDocumentMoniker": "DataBazer\\DataManager.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\DataManager.cs",
+              "RelativeToolTip": "DataBazer\\DataManager.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAvwMkAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T06:14:47.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\Program.cs",
               "RelativeDocumentMoniker": "DataBazer\\Program.cs",
-              "ToolTip": "C:\\Users\\fredr\\Downloads\\DataBazer\\DataBazer\\DataBazer\\Program.cs",
+              "ToolTip": "C:\\Users\\fredr\\source\\repos\\DataBazer\\DataBazer\\DataBazer\\Program.cs",
               "RelativeToolTip": "DataBazer\\Program.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAwwC8AAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T04:28:22.525Z",
               "EditorCaption": ""
